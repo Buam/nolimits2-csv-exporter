@@ -6,7 +6,7 @@ possible with the professional license of Nolimits 2.
 
 This can be especially useful for custom track and is achieved by extracting the spline out of the model file of a light-pattern-creator export (a Lightwave-object file).
 
-This is the equivalent of using "Export track spline" with Nolimits 2 professional, however, the spline will not be identical as you cannot choose the spacing of the vertices with this solution.
+This is the equivalent of using "Export track spline" with Nolimits 2 professional, however, the spline will not be identical as you cannot choose the spacing of the vertices with this solution (TODO).
 
 ## How to use
 
