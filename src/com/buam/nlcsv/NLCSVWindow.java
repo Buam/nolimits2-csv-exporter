@@ -214,7 +214,7 @@ public class NLCSVWindow extends JFrame {
 	}
 
 	public void complete() {
-		JOptionPane.showMessageDialog(this, "OBJ-File successfully converted to NL2 CSV!");
+		JOptionPane.showMessageDialog(this, "LWO-File successfully converted to NL2 CSV!");
 	}
 
 	private class SwingAction extends AbstractAction {
@@ -321,6 +321,8 @@ public class NLCSVWindow extends JFrame {
 	
 	public void processLwo(String path, String csvFilePath, float xOffset, float yOffset) {
 		
+		final int res = 2;
+		
 		LWOLoader loader = new LWOLoader(path);
 		List<Vector3> vertices = loader.vertices;
 		
@@ -346,12 +348,20 @@ public class NLCSVWindow extends JFrame {
 		
 		List<List<String>> csvData = new ArrayList<List<String>>();
 		
+		counter = 0;
+		
 		for(Vector3[] node : spline) {
 			/*System.out.println("Node " + (spline.indexOf(node)+1));
 			System.out.println(" 1{"+node[0].getX()+" "+node[0].getY()+" "+node[0].getZ()+"}");
 			System.out.println(" 2{"+node[1].getX()+" "+node[1].getY()+" "+node[1].getZ()+"}");
 			System.out.println(" 3{"+node[2].getX()+" "+node[2].getY()+" "+node[2].getZ()+"}");
 			System.out.println(" 4{"+node[3].getX()+" "+node[3].getY()+" "+node[3].getZ()+"}");*/
+			
+			if(counter == res) {
+				counter = 0;
+			} else {
+				continue;
+			}
 			
 			List<String> csvLine = new ArrayList<String>();
 			
@@ -390,6 +400,8 @@ public class NLCSVWindow extends JFrame {
 			csvLine.add(fd(Float.toString(up.getZ())));
 			
 			csvData.add(csvLine);
+			
+			counter++;
 		}
 		
 		CsvUtils.write(csvConfig, csvData, csvFilePath);
