@@ -10,7 +10,7 @@ This is the equivalent of using "Export track spline" with Nolimits 2 profession
 
 ## How to use
 
-1. [Download](https://github.com/Buam/nolimits2-csv-exporter) the latest release.
+1. [Download](https://github.com/Buam/nolimits2-csv-exporter/releases/download/1.0/nl2-csv-exporter.jar) the latest release.
 
 2. Open the coaster you want to export in Nolimits 2 and go to Advanced>Light Pattern Creator.
 
