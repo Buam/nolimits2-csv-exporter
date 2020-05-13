@@ -9,10 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CsvUtils {
-	
-	@SuppressWarnings("resource")
+
 	public static List<List<String>> load(CsvConfiguration config, String path) {
-		List<List<String>> finalData = new ArrayList<List<String>>();
+		List<List<String>> finalData = new ArrayList<>();
 		
 		BufferedReader reader;
 		
@@ -23,7 +22,7 @@ public class CsvUtils {
 			if(reader.readLine() == null) return finalData;
 			while((line = reader.readLine()) != null) {
 				String[] data = line.split(String.copyValueOf(new char[] {config.getSeperator()}));
-				List<String> dat = new ArrayList<String>();
+				List<String> dat = new ArrayList<>();
 				for(String s : data) {
 					dat.add(s.trim());
 				}

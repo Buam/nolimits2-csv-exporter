@@ -1,14 +1,14 @@
 package com.buam.nlcsv;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.commons.io.IOUtils;
+import javax.swing.*;
 
 public class LWOLoader {
 
@@ -16,16 +16,14 @@ public class LWOLoader {
 	public List<Vector3> vertices;
 	public List<Integer> indices;
 	
-	public LWOLoader(String path) {
-		File lwoFile = new File(path);
+	public LWOLoader(String path, JFrame frame) {
 		vertices = new ArrayList<Vector3>();
-		if(lwoFile.exists()) {
+		File f = new File(path);
+		if(f.exists()) {
 			try {
-				data = IOUtils.toByteArray(new FileInputStream(lwoFile));
-				/*for(byte b : data) {
-					System.out.print((char) b);
-				}*/
+				data = Files.readAllBytes(f.toPath());
 			} catch (IOException e) {
+				JOptionPane.showMessageDialog(frame, e.getClass().getName(), "Error loading file", JOptionPane.ERROR_MESSAGE);
 				e.printStackTrace();
 			}
 			if(data != null) {

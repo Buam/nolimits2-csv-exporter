@@ -18,6 +18,8 @@ import javax.swing.BoxLayout;
 import java.awt.CardLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+
+import com.buam.utils.csv.LineReader;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
@@ -36,9 +38,6 @@ public class HelpDialog extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private final Action action = new SwingAction();
 
-	/**
-	 * Create the dialog.
-	 */
 	public HelpDialog() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(HelpDialog.class.getResource("/assets/icon.png")));
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -49,16 +48,17 @@ public class HelpDialog extends JDialog {
 			e.printStackTrace();
 		}
 		setTitle("Help");
-		setBounds(100, 100, 450, 312);
+		setBounds(100, 100, 450, 360);
+		setResizable(false);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
-			JTextPane txtpnHi = new JTextPane();
-			txtpnHi.setContentType("text/html");
-			txtpnHi.setText("<html><body style=\"margin: 0\"><ol><li>Export your coaster with the Light Pattern Creator:</li><ol><li>Tick \"Generate SCO\", \"T\", \"B\", \"L\" and \"R\".</li><li>Leave the X and Y Offset at 0 and use any values you want for Width and Height.</li><li>Give your file a prefix and hit \"Generate\".</li></ol><li>Choose the LWO-File the Light Pattern Creator generated.</li><li>Specify the path for the CSV-File to be generated.</li><li>Specify the X and Y-Offsets (if you want a left rail, for example: X-Offset goes left, Y-Offset goes up)</li><li>Hit \"Convert\"</li></ol></body></html>");
-			contentPanel.add(txtpnHi, BorderLayout.NORTH);
+			JTextPane helpPane = new JTextPane();
+			helpPane.setContentType("text/html");
+			helpPane.setText(LineReader.read(getClass().getResource("/assets/help.html")));
+			contentPanel.add(helpPane, BorderLayout.NORTH);
 		}
 		{
 			JPanel buttonPane = new JPanel();
