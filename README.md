@@ -18,7 +18,7 @@ This is the equivalent of using "Export track spline" with Nolimits 2 profession
 
 4. Hit "Generate" and choose an output folder.
 
-5. Open the program (You must have Java installed. If you haven't, download it [here](https://www.java.com/en/download/)).
+5. Open the program (You must have Java installed. If you haven't, download it [here](https://www.oracle.com/java/technologies/downloads/)).
 
 6. Open the .lwo file in the previously selected output folder as the Light Pattern Creator File of the program.
 
